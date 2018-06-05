@@ -10,6 +10,8 @@ namespace HTC.UnityPlugin.Pointer3D
 {
     public class Pointer3DInputModule : BaseInputModule
     {
+        public ShowItemInfoUI _showItemInfoUI;
+
         private static Pointer3DInputModule instance;
         private static bool isApplicationQuitting = false;
 
@@ -386,6 +388,9 @@ namespace HTC.UnityPlugin.Pointer3D
                 if (!eventData.pressPrecessed)
                 {
                     ProcessPressDown(eventData);
+                    Debug.Log("GetPress");
+                    if(_showItemInfoUI)
+                        _showItemInfoUI.CheckUI_ShouldOff();
                 }
 
                 HandlePressExitAndEnter(eventData, eventData.pointerCurrentRaycast.gameObject);
